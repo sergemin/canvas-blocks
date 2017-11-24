@@ -12,8 +12,9 @@
 
         this.drawCircle = function() {
             c.beginPath();
-            c.arc(this.x, this.y, 0, Math.PI*2, false);
+            c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
             c.strokeStyle = 'pink';
+            c.fill();
             c.stroke();
         }
         this.updateCircle = function() {
@@ -34,8 +35,8 @@
         let radius = 25,
             x = Math.random()*(canvasWidth - radius*2) + radius,
             y = Math.random()*(canvasHeight - radius*2) + radius,
-            dx = (Math.random()-0.5)*10,
-            dy = (Math.random()-0.5)*10;
+            dx = (Math.random()-0.5)*3,
+            dy = (Math.random()-0.5)*3;
         circleArray.push(new Circle(x,y,dx,dy,radius));
     }
     function animateCircles() {
@@ -43,7 +44,6 @@
         c.clearRect(0,0, canvasWidth, canvasHeight);
         for(let i=0; i<circleArray.length; i++) {
             circleArray[i].updateCircle();
-            console.log(circleArray[i]);
         }
     }
     animateCircles();
